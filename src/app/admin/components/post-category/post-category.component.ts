@@ -48,4 +48,24 @@ export class PostCategoryComponent implements OnInit {
       this.categoryForm.markAllAsTouched();
     }
    }
+/*addCategory(): void{
+  if(this.categoryForm.valid){
+    this.adminService.addCategory(this.categoryForm.value).subscribe((res) =>{
+      if(res.id !=null){
+        this.snackBar.open('Category posted successfully', 'Close',{
+          duration:5000
+        });
+
+        this.router.navigateByUrl('/admin/dashboard');
+      }else{
+        this.snackBar.open(res.message, 'Close',{
+          duration:5000,
+          panelClass: 'error-snackbar'
+        });
+      }
+    })
+    }else{
+      this.categoryForm.markAllAsTouched();
+    }
+   }*/
 }
