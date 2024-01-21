@@ -23,14 +23,7 @@ import { PostCategoryComponent } from './components/post-category/post-category.
     ReactiveFormsModule,
     DemoAngularMaterialModule
 
-    /*imports: [
-      CommonModule,
-      AdminRoutingModule,
-      HttpClientModule,
-      ReactiveFormsModule,
-      DemoAngularMaterialModule
-  
-    ]*/
+  ]
 })
 export class AdminModule { }
 
