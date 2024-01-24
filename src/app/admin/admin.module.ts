@@ -27,3 +27,4 @@ import { PostCategoryComponent } from './components/post-category/post-category.
 })
 export class AdminModule { }
 
+//add commit de trassabilité
