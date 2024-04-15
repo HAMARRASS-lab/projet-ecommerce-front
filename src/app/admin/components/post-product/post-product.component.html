@@ -43,8 +43,8 @@
         </mat-form-filed>
         <mat-form-filed appearance="outline" class="form-field">
             <mat-label>Description</mat-label>
-             <textarea matInput type="number" placeholder="Price" formControlName="price"></textarea>
-             <mat-error *ngIf="productForm.get('price')?.hasError('required')">
+             <textarea matInput type="number" placeholder="Description" formControlName="description"></textarea>
+             <mat-error *ngIf="productForm.get('description')?.hasError('required')">
                 This input is required
             </mat-error>
         </mat-form-filed>
