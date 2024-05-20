@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
 
   getAllProducts(){
     this.products=[];
-    this.AdminService.getAllProducts.subscribe(res=>{
+    this.AdminService.getAllProducts().subscribe(res=>{
       res.forEach(element=>{
         element.processedImg='data:image/jpeg;base64,' +element.bytemg;
         this.products.push(element);
@@ -27,5 +27,6 @@ export class DashboardComponent implements OnInit {
     })
 
   }
+  
 
 }
