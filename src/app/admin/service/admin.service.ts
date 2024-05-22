@@ -10,31 +10,45 @@ const BASIC_URL="http://localhost:8080/";
 })
 export class AdminService {
 
-  constructor(private htttp: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   addCategory(categoryDto: any) : Observable<any>{
-    return this.htttp.post(BASIC_URL+ 'api/admin/category',categoryDto,{
+    return this.http.post(BASIC_URL+ 'api/admin/category',categoryDto,{
       headers: this.createAuthorizationHeader(),
     
     })
 
   }
   getAllCategory() : Observable<any>{
-    return this.htttp.get(BASIC_URL+ 'api/admin',{
+    return this.http.get(BASIC_URL+ 'api/admin',{
       headers: this.createAuthorizationHeader(),
     
     })
 
   }
   addProduct(productDto: any) : Observable<any>{
-    return this.htttp.post(BASIC_URL+ 'api/admin/product',productDto,{
+    return this.http.post(BASIC_URL+ 'api/admin/product',productDto,{
       headers: this.createAuthorizationHeader(),
     
     })
 
   }
   getAllProducts() : Observable<any>{
-    return this.htttp.get(BASIC_URL+ 'api/admin/products',{
+    return this.http.get(BASIC_URL+ 'api/admin/products',{
+      headers: this.createAuthorizationHeader(),
+    
+    })
+
+  }
+  getAllProductByName(name : any) : Observable<any>{
+    return this.http.get(BASIC_URL+ `api/admin/search/${name}`,{
+      headers: this.createAuthorizationHeader(),
+    
+    })
+
+  }
+  deleteProduct(productId: any) : Observable<any>{
+    return this.http.delete(BASIC_URL+ `api/admin/product/${productId}`,{
       headers: this.createAuthorizationHeader(),
     
     })
