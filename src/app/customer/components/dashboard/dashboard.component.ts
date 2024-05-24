@@ -50,6 +50,8 @@ export class DashboardComponent implements OnInit {
      }
 
      addToCart(id: any){
-      
+      this.customerService.addToCart(id).subscribe(res=>{
+        this.snackBar.open("Product added to cart successfully", "Close",{duration:5000})
+      })
      }
 }
