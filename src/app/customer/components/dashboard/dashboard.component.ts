@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   products: any[] =[];
   searchProductForm! :  FormGroup;
 
-  ngOnInit(): void {
+  ngOnInit() {
 
     this.getAllProducts();
     this.searchProductForm=this.fb.group({

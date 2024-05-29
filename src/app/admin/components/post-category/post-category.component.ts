@@ -22,7 +22,7 @@ export class PostCategoryComponent implements OnInit {
     private adminService: AdminService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.categoryForm=this.fb.group({
       name: [null,[Validators.required]],
       description: [null,[Validators.required]],

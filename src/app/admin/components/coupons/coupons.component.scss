@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+
+}
+mat-card{
+    width:100%;
+    border-radius:10px;
+    box-shadow: 0 4px 8px black;
+    
+}
+
+table{
+    width: 100%;
+}
+th.mat.header-cell{
+    font-weight:bolder;
+    color: blue;
+    padding: 10px;
+}
+
+td.mat-cell, td.bold-cell{
+    padding: 10px;
+}
+td.bold-cell{
+    font-weght:bold;
+}

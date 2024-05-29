@@ -17,7 +17,7 @@ export class AppComponent {
     
   }
 
-  ngOnInit():void{
+  ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.isCustomerLoggedIn = UserStorageService.isCustomerLoggeedIn();

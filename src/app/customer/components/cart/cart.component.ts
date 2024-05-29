@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
     public dialog :MatDialog
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
     this.getCart();
   }
