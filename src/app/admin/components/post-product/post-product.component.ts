@@ -40,7 +40,7 @@ export class PostProductComponent implements OnInit {
     reader.readAsDataURL(this.selectedFile);
    }
 
-   ngOnInit(): void {
+   ngOnInit() {
 
     this.productForm=this.fb.group({
       categoryId:[null, [Validators.required]],
