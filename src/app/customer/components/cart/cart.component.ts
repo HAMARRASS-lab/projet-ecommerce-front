@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../services/customer.service';
@@ -11,6 +11,12 @@ import { CustomerService } from '../../services/customer.service';
 })
 export class CartComponent implements OnInit {
 
+  cartItems: any[] =[];
+  order:any;
+
+  couponForm: FormGroup;
+    
+
   constructor(private customerService: CustomerService,
     private snackbar: MatSnackBar,
     private fb: FormBuilder
@@ -18,13 +24,30 @@ export class CartComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    
+    this.couponForm= this.fb.group({
+      code: [null, [Validators.required]]
+    });
     this.getCart();
+
   }
 
-   cartItems: any[] =[];
-   order:any;
-     
+  applyCoupon(){
+    this.customerService.applyCoupon(this.couponForm.get(['code'])!.value).subscribe(res=>{
+
+      this.snackbar.open("Coupon Applied successfully" , 'close',{
+        duration:5000
+      });
+      this.getCart();
+
+    }, error=>{
+       this.snackbar.open(error.error, 'Close',{
+        duration: 5000
+       });
+    })
+  }
+
+
 
    getCart(){
     this.cartItems=[];
