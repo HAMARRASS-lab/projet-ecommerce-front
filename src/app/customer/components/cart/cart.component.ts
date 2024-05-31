@@ -59,4 +59,12 @@ export class CartComponent implements OnInit {
       });
     })
    }
+
+   increaseQuantity(productId:  any){
+    this.customerService.increaseProductQuantity(productId).subscribe(res =>{
+      this.snackbar.open('Product quantity increased.', 'Close', {duration:5000});
+      this.getCart();
+    })
+
+   }
 }
