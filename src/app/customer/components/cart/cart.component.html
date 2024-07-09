@@ -39,7 +39,7 @@
             Coupon Applied : {{order.couponName}}
         </div>
         <div > 
-           <button mat-raised-button color="primary">Place order</button>>
+           <button mat-raised-button color="primary" (click)="placeOrder()">Place order</button>>
         </div>
     </div>
     <div class="container" *ngIf="order.couponName==null">
