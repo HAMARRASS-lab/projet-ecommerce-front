@@ -1,0 +1,24 @@
+mat-card{
+    width:400px;
+    border-radius:10px;
+    box-shadow: 0 4px 8px rgba($color: #000000, $alpha: 1.0)
+}
+
+mat-card-title{
+    display: flex;
+    justify-content:center;
+    font-size:24px;
+    padding:10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius:10px;
+}
+mat-card-content{
+    padding: 16px;
+}
+mat-form-field{
+    width:100%;
+    margin-bottom: 16px;
+}
+input{
+    font: 16px;
+}
