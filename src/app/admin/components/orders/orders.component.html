@@ -1,0 +1,57 @@
+<div class="container">
+    <mat-card>
+        <mat-card-content >
+            <table mat-table [dataSource]="orders" class="mat-elevation-z8">
+
+             <ng-container matColumnDef="trackingId">
+                <th mat-header-cell *matHeaderCellDef>Trackeig ID </th>
+                <td mat-cell *matCellDef="let order">{{order.trackingId}}</td>
+             </ng-container>
+
+             <ng-container matColumnDef="trackingId">
+                <th mat-header-cell *matHeaderCellDef>User Name </th>
+                <td mat-cell *matCellDef="let order">{{order.userName}}</td>
+             </ng-container>
+             <ng-container matColumnDef="trackingId">
+                <th mat-header-cell *matHeaderCellDef>Amount </th>
+                <td mat-cell *matCellDef="let order">{{order.amount}}</td>
+             </ng-container>
+             <ng-container matColumnDef="trackingId">
+                <th mat-header-cell *matHeaderCellDef>Description</th>
+                <td mat-cell *matCellDef="let order">{{order.orderDescription}}</td>
+             </ng-container>
+             <ng-container matColumnDef="trackingId">
+                <th mat-header-cell *matHeaderCellDef>Address</th>
+                <td mat-cell *matCellDef="let order">{{order.address}}</td>
+             </ng-container>
+             <ng-container matColumnDef="trackingId">
+                <th mat-header-cell *matHeaderCellDef>Date</th>
+                <td mat-cell *matCellDef="let order">{{order.date | date: 'dd/MM/yyyy'}}</td>
+             </ng-container>
+             <ng-container matColumnDef="trackingId">
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell *matCellDef="let order">{{order.status}}</td>
+             </ng-container>
+                
+                 <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Action</button>
+                 <mat-menu #menu="matMenu">
+                    <span>
+                        <span>
+                            <button mat-menu-item>Shipped</button>
+                        </span>
+                        <span>
+                            <button mat-menu-item>Delivred</button>
+                        </span>
+                    </span>
+
+                 </mat-menu>
+
+                 <tr mat-header-row *matheaderRowDef="['trackingId','userName','amount','description','address','date','status','action']"></tr>
+                 <tr mat-row *matRowDef="['trackingId','userName','amount','description','address','date','status','action']"></tr>
+           
+                </table>
+  
+        </mat-card-content>
+    </mat-card>
+
+</div>
