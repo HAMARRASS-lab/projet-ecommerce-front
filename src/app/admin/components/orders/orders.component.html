@@ -30,24 +30,24 @@
              </ng-container>
              <ng-container matColumnDef="trackingId">
                 <th mat-header-cell *matHeaderCellDef>Status</th>
-                <td mat-cell *matCellDef="let order">{{order.status}}</td>
+                <td mat-cell *matCellDef="let order">{{order.orderStatus}}</td>
              </ng-container>
                 
                  <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Action</button>
                  <mat-menu #menu="matMenu">
                     <span>
                         <span>
-                            <button mat-menu-item>Shipped</button>
+                            <button mat-menu-item (click)="changeOrderStatus(order.id,'Shipped')">Shipped</button>
                         </span>
                         <span>
-                            <button mat-menu-item>Delivred</button>
+                            <button mat-menu-item (click)="changeOrderStatus(order.id,'Delivered')">Delivred</button>
                         </span>
                     </span>
 
                  </mat-menu>
 
                  <tr mat-header-row *matheaderRowDef="['trackingId','userName','amount','description','address','date','status','action']"></tr>
-                 <tr mat-row *matRowDef="['trackingId','userName','amount','description','address','date','status','action']"></tr>
+                 <tr mat -row *matRowDef="['trackingId','userName','amount','description','address','date','status','action']"></tr>
            
                 </table>
   

@@ -75,6 +75,13 @@ export class AdminService {
     })
 
   }
+  chengeOrderStatus(ordrrId: number, status:string) : Observable<any>{
+    return this.http.get(BASIC_URL+ `api/admin/order/${orderId}/${status}`,{
+      headers: this.createAuthorizationHeader(),
+    
+    })
+
+  }
   
   private createAuthorizationHeader(): HttpHeaders{
 
