@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoAngularMaterialModule } from '../DemoAngularMaterialModule';
 import { CartComponent } from './components/cart/cart.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
+import { MyOrderComponent } from './components/my-order/my-order.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { PlaceOrderComponent } from './components/place-order/place-order.compon
     CustomerComponent,
     DashboardComponent,
     CartComponent,
-    PlaceOrderComponent
+    PlaceOrderComponent,
+    MyOrderComponent
   ],
   imports: [
     CommonModule,
