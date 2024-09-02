@@ -5,11 +5,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CartComponent } from './components/cart/cart.component';
 import { MyOrderComponent } from './components/my-order/my-order.component';
 
+
 const routes: Routes = [
   { path: '', component: CustomerComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'my-order', component: MyOrderComponent },
+
 ];
 
 @NgModule({
