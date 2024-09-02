@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'post-coupon', component: PostCouponComponent},
   { path: 'coupons', component: CouponsComponent },
   { path: 'orders', component: OrdersComponent },
+  { path: 'faq/:productId', component: PostProductComponent },
 ];
 
 @NgModule({

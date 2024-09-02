@@ -82,6 +82,14 @@ export class AdminService {
     })
 
   }
+  postFAQ(productId: number, faqDto:string) : Observable<any>{
+    return this.http.post(BASIC_URL+ `api/admin/order/${productId}`,faqDto,{
+      headers: this.createAuthorizationHeader(),
+    
+    })
+
+  }
+  
   
   private createAuthorizationHeader(): HttpHeaders{
 
