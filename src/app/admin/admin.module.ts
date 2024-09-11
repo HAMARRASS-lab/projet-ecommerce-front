@@ -13,6 +13,7 @@ import { PostCouponComponent } from './components/post-coupon/post-coupon.compon
 import { CouponsComponent } from './components/coupons/coupons.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { PostPrtoductFaqComponent } from './components/post-prtoduct-faq/post-prtoduct-faq.component';
+import { UpdateProductComponent } from './components/update-product/update-product.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PostPrtoductFaqComponent } from './components/post-prtoduct-faq/post-pr
     PostCouponComponent,
     CouponsComponent,
     OrdersComponent,
-    PostPrtoductFaqComponent
+    PostPrtoductFaqComponent,
+    UpdateProductComponent
   ],
   imports: [
     CommonModule,
