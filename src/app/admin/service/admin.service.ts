@@ -33,6 +33,13 @@ export class AdminService {
     })
 
   }
+  updateProduct(productId:any, productDto: any) : Observable<any>{
+    return this.http.put(BASIC_URL+ `api/admin/product/${productId}`,productDto,{
+      headers: this.createAuthorizationHeader(),
+    
+    })
+
+  }
   getAllProducts() : Observable<any>{
     return this.http.get(BASIC_URL+ 'api/admin/products',{
       headers: this.createAuthorizationHeader(),
@@ -97,6 +104,15 @@ export class AdminService {
       'Authorization', 'Bearer' +UserStorageService.getToken()
     )
   }
+
+  getProductsById(productId) : Observable<any>{
+    return this.http.get(BASIC_URL+ `api/admin/products/${productId}`,{
+      headers: this.createAuthorizationHeader(),
+    
+    })
+
+  }
+ 
 
  
 }

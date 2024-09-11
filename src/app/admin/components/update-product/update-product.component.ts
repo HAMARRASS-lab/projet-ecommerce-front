@@ -1,26 +1,30 @@
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../../service/admin.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-post-product',
-  templateUrl: './post-product.component.html',
-  styleUrls: ['./post-product.component.scss']
+  selector: 'app-update-product',
+  templateUrl: './update-product.component.html',
+  styleUrls: ['./update-product.component.scss']
 })
-export class PostProductComponent implements OnInit {
+export class UpdateProductComponent implements OnInit {
 
+  productId =this.activatedroute.snapshot.params['productId'];
   productForm : FormGroup;
   listofCategories:any=[];
   selectedFile : File | null;
   imagePreview : string | ArrayBuffer | null;
+  existingImage: string;
+  imageChanged=false;
 
   constructor( 
     private fb: FormBuilder,
     private router:Router,
     private MatSnackBar:MatSnackBar,
-    private adminService:AdminService
+    private adminService:AdminService,
+    private activatedroute : ActivatedRoute
     ) {}
 
  
@@ -28,6 +32,8 @@ export class PostProductComponent implements OnInit {
   onFileSelected(event:any){
     this.selectedFile=event.target.files[0];
     this.previewImage();
+    this.imageChanged=true;
+    this.existingImage=null;
   }
    previewImage(){
     const reader = new FileReader();
@@ -47,6 +53,7 @@ export class PostProductComponent implements OnInit {
       description:[null, [Validators.required]],
     });
     this.getAllCategories();
+    this.getProductById();
   }
   getAllCategories(){
     this.adminService.getAllCategory().subscribe(res=>{
@@ -54,17 +61,20 @@ export class PostProductComponent implements OnInit {
     })
   }
 
-  addProduct() :void{
+  updateProduct() :void{
     if(this.productForm.valid){
        const formData:FormData=new FormData();
-       formData.append('img', this.selectedFile);
+       if(this.imageChanged && this.selectedFile){
+        formData.append('imgg',this.selectedFile);
+       }
+      
        formData.append('categoryId', this.productForm.get('categoryId').value);
        formData.append('name', this.productForm.get('name').value);
        formData.append('description', this.productForm.get('description').value);
        formData.append('price', this.productForm.get('price').value);
-       this.adminService.addProduct(formData).subscribe((res)=>{
+       this.adminService.updateProduct(this.productId,formData).subscribe((res)=>{
            if(res.id !=null){
-            this.MatSnackBar.open('Product Posted Successfully', 'Close',{
+            this.MatSnackBar.open('Product Updated Successfully', 'Close',{
               duration:5000
             });
             this.router.navigateByUrl('/admin/dashboard');
@@ -82,5 +92,13 @@ export class PostProductComponent implements OnInit {
     }
 
   }
+
+  getProductById(){
+    this.adminService.getProductsById(this.productId).subscribe(res=>{
+      this.productForm.patchValue(res);
+      this.existingImage='data:image/jpeg;base64,'+res.byteImg;
+    })
+  }
+
 
 }

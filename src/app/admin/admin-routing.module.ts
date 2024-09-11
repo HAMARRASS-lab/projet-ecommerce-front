@@ -7,6 +7,7 @@ import { PostProductComponent } from './components/post-product/post-product.com
 import { CouponsComponent } from './components/coupons/coupons.component';
 import { PostCouponComponent } from './components/post-coupon/post-coupon.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { UpdateProductComponent } from './components/update-product/update-product.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'coupons', component: CouponsComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'faq/:productId', component: PostProductComponent },
-];
+  { path: 'product/:productId', component: UpdateProductComponent },
+]; 
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
