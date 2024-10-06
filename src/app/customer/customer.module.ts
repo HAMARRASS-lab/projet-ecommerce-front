@@ -10,6 +10,8 @@ import { DemoAngularMaterialModule } from '../DemoAngularMaterialModule';
 import { CartComponent } from './components/cart/cart.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
 import { MyOrderComponent } from './components/my-order/my-order.component';
+import { ViewOrderProductComponent } from './components/view-order-product/view-order-product.component';
+import { ReviewOrderedProductComponent } from './components/review-ordered-product/review-ordered-product.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { MyOrderComponent } from './components/my-order/my-order.component';
     DashboardComponent,
     CartComponent,
     PlaceOrderComponent,
-    MyOrderComponent
+    MyOrderComponent,
+    ViewOrderProductComponent,
+    ReviewOrderedProductComponent
   ],
   imports: [
     CommonModule,
