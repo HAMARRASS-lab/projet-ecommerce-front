@@ -8,16 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyOrderComponent implements OnInit {
 
-  myOrders:any;
+  myOrders: any;
   constructor(private CustomerService: CustomerService) { }
 
   ngOnInit(): void {
     this.getMyOrder();
   }
 
-  getMyOrder(){
-    this.CustomerService.OrederByUserId().subscribe(res=>{
-      this.myOrders=res;
+  getMyOrder() {
+    this.CustomerService.OrederByUserId().subscribe(res => {
+      this.myOrders = res;
     })
   }
 
