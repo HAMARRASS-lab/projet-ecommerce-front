@@ -6,6 +6,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { MyOrderComponent } from './components/my-order/my-order.component';
 import { ViewOrderProductComponent } from './components/view-order-product/view-order-product.component';
 import { ReviewOrderedProductComponent } from './components/review-ordered-product/review-ordered-product.component';
+import { ViewProductDetailComponent } from './view-product-detail/view-product-detail.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'my_orders', component: MyOrderComponent },
   { path: 'ordered_products/:orderId', component: ViewOrderProductComponent },
   { path: 'review/:orderId', component: ReviewOrderedProductComponent },
+  { path: 'product/:productId', component: ViewProductDetailComponent },
 
 ];
 
