@@ -1,7 +1,8 @@
 import { ActivatedRoute } from '@angular/router';
-import { CustomerService } from './../services/customer.service';
+import { CustomerService } from '../../services/customer.service';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserStorageService } from 'src/app/services/storage/user-storage.service';
 
 @Component({
   selector: 'app-view-product-detail',
@@ -37,5 +38,24 @@ export class ViewProductDetailComponent implements OnInit {
 
     })
   }
+
+addToWishlist(){
+  const wishListDto={
+  productId: this.productId,
+  userId: UserStorageService.getUserId(),
+  }
+  this.customerService.addProductToWishlist(wishListDto).subscribe(res=>{
+   if(res.is!=null){
+    this.snackBar.open('Product added to wishlist successfully!', 'Close',{
+    duration : 5000
+    });
+   }else{
+    this.snackBar.open("Already in wishlist", 'ERROR',{
+     duration:5000
+    });
+   }
+  })
+}
+
 
 }
