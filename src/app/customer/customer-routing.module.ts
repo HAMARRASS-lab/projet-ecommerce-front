@@ -6,7 +6,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { MyOrderComponent } from './components/my-order/my-order.component';
 import { ViewOrderProductComponent } from './components/view-order-product/view-order-product.component';
 import { ReviewOrderedProductComponent } from './components/review-ordered-product/review-ordered-product.component';
-import { ViewProductDetailComponent } from './view-product-detail/view-product-detail.component';
+import { ViewProductDetailComponent } from './components/view-product-detail/view-product-detail.component';
 
 
 const routes: Routes = [
@@ -24,4 +24,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CustomerRoutingModule { }
+
+export class CustomerRoutingModule { } 

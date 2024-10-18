@@ -113,6 +113,14 @@ export class CustomerService {
     })
 
   }
+  addProductToWishlist(wishListDto: any): Observable<any> {
+
+    return this.http.post(BASIC_URL + `api/customer/wishlist`, wishListDto, {
+      headers: this.createAuthorizationHeader(),
+
+    })
+
+  }
 
   getProductDetailById(productId: number): Observable<any>{
 
