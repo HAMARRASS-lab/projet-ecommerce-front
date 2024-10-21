@@ -10,6 +10,7 @@ import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DemoAngularMaterialModule } from './DemoAngularMaterialModule';
+import { ViewWishListComponent } from './view-wish-list/view-wish-list.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { DemoAngularMaterialModule } from './DemoAngularMaterialModule';
     AppComponent,
     LoginComponent,
     SignupComponent,
+    ViewWishListComponent,
    
   ],
   imports: [
