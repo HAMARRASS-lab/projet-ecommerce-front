@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DemoAngularMaterialModule } from './DemoAngularMaterialModule';
 import { ViewWishListComponent } from './view-wish-list/view-wish-list.component';
+import { TrackOrderComponent } from './track-order/track-order.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ViewWishListComponent } from './view-wish-list/view-wish-list.component
     LoginComponent,
     SignupComponent,
     ViewWishListComponent,
+    TrackOrderComponent,
    
   ],
   imports: [

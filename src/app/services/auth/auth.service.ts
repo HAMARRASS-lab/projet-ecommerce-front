@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 const BASIC_URL="http://localhost:8080/";
+const AUTH_HEADER= 'authorization';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,9 @@ export class AuthService {
        return false;
     })
   )
+}
+
+getOrderByTrackingId(trackingId: number): Observable<any>{
+  return this.http.get(BASIC_URL+ `order/${trackingId}`);
 }
 } 
