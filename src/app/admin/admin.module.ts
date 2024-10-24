@@ -14,6 +14,8 @@ import { CouponsComponent } from './components/coupons/coupons.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { PostPrtoductFaqComponent } from './components/post-prtoduct-faq/post-prtoduct-faq.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { OrderByStatusComponent } from './components/analytics/order-by-status/order-by-status.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { UpdateProductComponent } from './components/update-product/update-produ
     CouponsComponent,
     OrdersComponent,
     PostPrtoductFaqComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    AnalyticsComponent,
+    OrderByStatusComponent
   ],
   imports: [
     CommonModule,
