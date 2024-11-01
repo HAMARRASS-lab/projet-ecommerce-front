@@ -11,6 +11,11 @@
                 </mat-error>
 
             </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="orderDescription" placeholder="Description" required>
+               
+            </mat-form-field>
             <div class="button-row">
 
                 <button mat-raised-button color="primary" type="submit" [disabled]="orderForm.invalid" (click)="placeOrder()" class="order-button">

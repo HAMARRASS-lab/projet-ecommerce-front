@@ -1,7 +1,7 @@
 <div class="container">
     <mat-card>
         <mat-card-content >
-            <table mat-table [dataSource]="orders" class="mat-elevation-z8">
+            <table mat-table [dataSource]="order" class="mat-elevation-z8">
 
              <ng-container matColumnDef="trackingId">
                 <th mat-header-cell *matHeaderCellDef>Trackeig ID </th>
@@ -34,13 +34,13 @@
              </ng-container>
                 
                  <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Action</button>
-                 <mat-menu #menu="matMenu">
+                 <mat-menu #menu="matMenu" >
                     <span>
                         <span>
-                            <button mat-menu-item (click)="changeOrderStatus(order.id,'Shipped')">Shipped</button>
+                            <button mat-menu-item (click)="chengeOrderStatus(order.id,'Shipped')">Shipped</button>
                         </span>
                         <span>
-                            <button mat-menu-item (click)="changeOrderStatus(order.id,'Delivered')">Delivred</button>
+                            <button mat-menu-item (click)="chengeOrderStatus(order.id,'Delivered')">Delivred</button>
                         </span>
                     </span>
 

@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SignupComponent implements OnInit {
 
   signupForm!: FormGroup;
-  hidePassword=true;
+  hidePassword = true;
 
   constructor(private fb: FormBuilder,
     private snackBar: MatSnackBar,
@@ -20,9 +20,6 @@ export class SignupComponent implements OnInit {
     private router: Router) { 
 
     }
-
-  
-   
 
   ngOnInit(): void {
     this.signupForm=this.fb.group({

@@ -1,6 +1,6 @@
 <div class="conatainer" style="padding: 30px;">
-           <mat-cart>
-            <mat-cart-content>
+           <mat-card>
+            <mat-card-content>
                 <table mat-table [dataSource]="coupons" class="mat-elevation-z8">
                     <ng-container matColumnDef="id">
                           <th mat-header-cell *matHeaderCellDef>Coupon ID</th>  
@@ -29,6 +29,6 @@
                   <tr mat-header-row *matHeaderRowDef="['id','name','discount','code','expirationDate']"></tr>
                   <tr mat-row *matRowDef=" let row; columns : ['id','name','discount','code','expirationDate']"></tr>
                 </table>
-            </mat-cart-content>
-           </mat-cart>
+            </mat-card-content>
+           </mat-card>
 </div>

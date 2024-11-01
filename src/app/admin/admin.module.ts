@@ -12,10 +12,14 @@ import { PostProductComponent } from './components/post-product/post-product.com
 import { PostCouponComponent } from './components/post-coupon/post-coupon.component';
 import { CouponsComponent } from './components/coupons/coupons.component';
 import { OrdersComponent } from './components/orders/orders.component';
-import { PostPrtoductFaqComponent } from './components/post-prtoduct-faq/post-prtoduct-faq.component';
+
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { OrderByStatusComponent } from './components/analytics/order-by-status/order-by-status.component';
+import {  MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { PostPrtoductFaqComponent } from './components/post-product-faq/post-product-faq.component';
 
 
 @NgModule({
@@ -27,10 +31,10 @@ import { OrderByStatusComponent } from './components/analytics/order-by-status/o
     PostCouponComponent,
     CouponsComponent,
     OrdersComponent,
-    PostPrtoductFaqComponent,
     UpdateProductComponent,
     AnalyticsComponent,
-    OrderByStatusComponent
+    OrderByStatusComponent,
+    PostPrtoductFaqComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +42,11 @@ import { OrderByStatusComponent } from './components/analytics/order-by-status/o
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    DemoAngularMaterialModule
+    DemoAngularMaterialModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    
 
   ]
 })

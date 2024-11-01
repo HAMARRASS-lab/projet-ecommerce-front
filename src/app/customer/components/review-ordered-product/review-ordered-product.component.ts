@@ -17,7 +17,8 @@ export class ReviewOrderedProductComponent implements OnInit {
   selectedFile: File | null;
   imagePreview: string | ArrayBuffer | null
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private customerService: CustomerService,
     private router: Router,
@@ -31,6 +32,7 @@ export class ReviewOrderedProductComponent implements OnInit {
       description: [null, [Validators.required]],
     })
   }
+  
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
     this.previewImage();

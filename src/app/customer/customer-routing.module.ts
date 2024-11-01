@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'my_orders', component: MyOrderComponent },
   { path: 'ordered_products/:orderId', component: ViewOrderProductComponent },
-  { path: 'review/:orderId', component: ReviewOrderedProductComponent },
+  { path: 'review/:productId', component: ReviewOrderedProductComponent },
   { path: 'product/:productId', component: ViewProductDetailComponent },
   { path: 'wishlist', component: ViewWishListComponent},
 

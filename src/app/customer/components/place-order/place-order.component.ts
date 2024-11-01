@@ -17,25 +17,25 @@ export class PlaceOrderComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private snackBar:MatSnackBar,
-    private CustomerService: CustomerService,
+    private customerService: CustomerService,
     private router: Router,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
 
-    this.orderForm=this.fb.group({
-      address: [null, [Validators.required]]
+    this.orderForm = this.fb.group({
+      address: [null, [Validators.required]],
+      orderDescription: [null]
     })
   }
-  closeForm() {
-     false;
-  }
+
+ 
   
 
   placeOrder(){
-    this.CustomerService.placeOreder(this.orderForm.value).subscribe(res =>{
-      if(res.id!=null){
+    this.customerService.placeOreder(this.orderForm.value).subscribe(res =>{
+      if(res.id != null){
           this.snackBar.open("Order placed successfully", "Close",{duration:5000})
           this.router.navigateByUrl("/customer/my-orders");
           this.closeForm();
@@ -44,6 +44,9 @@ export class PlaceOrderComponent implements OnInit {
       }
     })
   }
-
+  
+  closeForm() {
+    false;
+ }
 
 }

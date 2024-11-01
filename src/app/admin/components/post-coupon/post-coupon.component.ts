@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./post-coupon.component.scss']
 })
 export class PostCouponComponent implements OnInit {
+  
+  couponForm!: FormGroup;
 
   constructor(
     private fb:FormBuilder,
@@ -34,20 +36,21 @@ export class PostCouponComponent implements OnInit {
           this.AdminService.addCoupon(this.couponForm.value).subscribe(res=>{
             if(res.id != null){
               this.snackBar.open('Coupon Posted Successfully!', 'Close',{
-                duration:5000
+                duration : 5000
               });
               this.router.navigateByUrl('/admin/dashboard');
-            }else{
+            } else {
               this.snackBar.open(res.message, 'Close', {
-                duration:5000,
+                duration : 5000,
                 panelClass:'error-snackbar'
               });
             }
           })
-    }else{
+    } else {
       this.couponForm.markAllAsTouched();
     }
   }
-  couponForm!: FormGroup;
+
+
 
 }

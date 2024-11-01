@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UpdateProductComponent implements OnInit {
 
-  productId =this.activatedroute.snapshot.params['productId'];
+  productId = this.activatedroute.snapshot.params['productId'];
   productForm : FormGroup;
   listofCategories:any=[];
   selectedFile : File | null;
@@ -55,15 +55,16 @@ export class UpdateProductComponent implements OnInit {
     this.getAllCategories();
     this.getProductById();
   }
+  
   getAllCategories(){
-    this.adminService.getAllCategory().subscribe(res=>{
+    this.adminService.getAllCategories().subscribe(res=>{
       this.listofCategories=res;
     })
   }
 
   updateProduct() :void{
     if(this.productForm.valid){
-       const formData:FormData=new FormData();
+       const formData:FormData  = new FormData();
        if(this.imageChanged && this.selectedFile){
         formData.append('imgg',this.selectedFile);
        }

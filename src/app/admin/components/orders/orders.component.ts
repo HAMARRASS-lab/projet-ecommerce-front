@@ -10,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class OrdersComponent implements OnInit {
 
 
-  orders: any;
+  order: any;
 
-  constructor(private AdminService:AdminService,private snackBar: MatSnackBar) { }
+  constructor(
+    private AdminService: AdminService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
 
@@ -21,12 +24,12 @@ export class OrdersComponent implements OnInit {
 
   getPlacedOrders(){
     this.AdminService.getPlaceOrders().subscribe(res=>{
-      this.orders=res;
+      this.order = res;
     })
   }
   chengeOrderStatus(orderId: number, status:string){
     this.AdminService.chengeOrderStatus(orderId,status).subscribe(res=>{
-      if(res.id !=null){
+      if(res.id != null){
         this.snackBar.open("order status changed successfully", "Close",{duration:5000});
         this.getPlacedOrders();
       }else{
