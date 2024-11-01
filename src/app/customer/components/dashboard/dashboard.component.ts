@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private customerService:CustomerService, 
+    private customerService : CustomerService, 
     private fb:FormBuilder,
     private snackBar: MatSnackBar,
   ){}

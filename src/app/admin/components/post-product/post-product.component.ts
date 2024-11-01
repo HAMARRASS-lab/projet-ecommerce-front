@@ -26,7 +26,7 @@ export class PostProductComponent implements OnInit {
  
 
   onFileSelected(event:any){
-    this.selectedFile=event.target.files[0];
+    this.selectedFile = event.target.files[0];
     this.previewImage();
   }
    previewImage(){
@@ -49,14 +49,14 @@ export class PostProductComponent implements OnInit {
     this.getAllCategories();
   }
   getAllCategories(){
-    this.adminService.getAllCategory().subscribe(res=>{
+    this.adminService.getAllCategories().subscribe(res=>{
       this.listofCategories=res;
     })
   }
 
   addProduct() :void{
     if(this.productForm.valid){
-       const formData:FormData=new FormData();
+       const formData: FormData = new FormData();
        formData.append('img', this.selectedFile);
        formData.append('categoryId', this.productForm.get('categoryId').value);
        formData.append('name', this.productForm.get('name').value);
@@ -74,7 +74,7 @@ export class PostProductComponent implements OnInit {
             });
            }
        })
-    }else{
+    } else {
       for(const i in this.productForm.controls){
         this.productForm.controls[i].markAsDirty();
         this.productForm.controls[i].updateValueAndValidity();

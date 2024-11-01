@@ -23,7 +23,7 @@
     <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
    </mat-toolbar>
   </div>
-  <div *ngIf="!isCustomerLoggedIn ">
+  <div *ngIf="isCustomerLoggedIn ">
     <mat-toolbar color="primary" class="navbar">
       <span class="navbar-brand">E-Commerce</span>
       <span class="spacer"></span>

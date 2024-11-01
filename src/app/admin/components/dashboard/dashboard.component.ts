@@ -57,7 +57,8 @@ export class DashboardComponent implements OnInit {
         if(res.body==null){
           this.snackBar.open('Product Deleted Successfully', 'Close',{
             duration:5000
-          })
+          });
+          this.getAllProducts();
       }else{
         this.snackBar.open(res.message, 'Close', {
           duration: 5000,

@@ -16,7 +16,8 @@ export class ViewProductDetailComponent implements OnInit {
   FAQS: any[]=[];
   reviews: any[] =[];
 
-  constructor(private snackBar: MatSnackBar,
+  constructor(
+    private snackBar: MatSnackBar,
     private customerService:CustomerService,
     private activatedRoute: ActivatedRoute
   ) { }

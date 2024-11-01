@@ -39,7 +39,7 @@
             <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color : blue">
                Status
             </mat-header-cell>
-           <mat-cell *matCellDef="let myOrder">
+           <mat-cell *matCellDef="let myOrder">{{myOrder.OrderStatus}}
            </mat-cell>
           </ng-container>
           <ng-container matColumnDef="Action">
@@ -48,14 +48,14 @@
             </mat-header-cell>
            <mat-cell *matCellDef="let myOrder">
             <span *ngIf="myOrder.OrderStatus == 'Delivred'">
-               <button mat-raised-button color="primary" type="submit" routerLink="/customer/ordered_products/{myOrder.ID}">
+               <button mat-raised-button color="primary" type="submit" routerLink="/customer/ordered_products/{myOrder.id}">
                 Review
                </button>
             </span>
            </mat-cell>
           </ng-container>
 
-          <mat-header-row *matHeaderRowDef="'trackingId','amount','description','address','date','status','action'"></mat-header-row>
+          <mat-header-row *matHeaderRowDef="['trackingId','amount','description','address','date','status','action']"></mat-header-row>
           <mat-row *matRowDef="let myOrder; colummns: ['trackingId','amount','description','address','date','status','action']"></mat-row>
     </mat-table>
 </ng-container>

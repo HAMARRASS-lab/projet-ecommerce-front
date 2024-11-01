@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { DemoAngularMaterialModule } from './DemoAngularMaterialModule';
 import { ViewWishListComponent } from './view-wish-list/view-wish-list.component';
 import { TrackOrderComponent } from './track-order/track-order.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -32,6 +35,9 @@ import { TrackOrderComponent } from './track-order/track-order.component';
     ReactiveFormsModule,
     HttpClientModule,
     DemoAngularMaterialModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     
   ],
   providers: [],

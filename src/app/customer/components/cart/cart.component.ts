@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../services/customer.service';
 import { PlaceOrderComponent } from '../place-order/place-order.component';
+import { publish } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -20,7 +21,7 @@ export class CartComponent implements OnInit {
 
   constructor(private customerService: CustomerService,
     private snackbar: MatSnackBar,
-    private fb: FormBuilder
+    private fb: FormBuilder,
     public dialog :MatDialog
   ) { }
 
@@ -47,7 +48,6 @@ export class CartComponent implements OnInit {
        });
     })
   }
-
 
 
    getCart(){

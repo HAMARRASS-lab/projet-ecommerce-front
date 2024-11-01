@@ -9,9 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewOrderProductComponent implements OnInit {
 
-  orderId: any= this.activatedRoute.snapshot.params['orderId'];
-
-  orderedProductDetailsList=[];
+  orderId: any = this.activatedRoute.snapshot.params['orderId'];
+  orderedProductDetailsList = [];
   totalAmount: any;
 
   constructor(private activatedRoute:ActivatedRoute, private customerService: CustomerService) { }
@@ -23,7 +22,7 @@ export class ViewOrderProductComponent implements OnInit {
 getOrdredProductsDetailsByOrderId(){
   this.customerService.getOrderedProducts(this.orderId).subscribe(res=>{
     res.productDtoList.array.array.forEach(element => {
-      element.processedImg = 'data:image/jpeg;base64,'+element.byteImg;
+      element.processedImg = 'data:image/jpeg;base64,'+ element.byteImg;
       this.orderedProductDetailsList.push(element);
     });
 
