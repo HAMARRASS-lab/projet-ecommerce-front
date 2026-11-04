@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostProductFaqComponent } from './post-product-faq.component';
+import { PostPrtoductFaqComponent } from './post-product-faq.component';
 
-describe('PostProductFaqComponent', () => {
-  let component: PostProductFaqComponent;
-  let fixture: ComponentFixture<PostProductFaqComponent>;
+describe('PostPrtoductFaqComponent', () => {
+  let component: PostPrtoductFaqComponent;
+  let fixture: ComponentFixture<PostPrtoductFaqComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PostProductFaqComponent ]
+      declarations: [ PostPrtoductFaqComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PostProductFaqComponent);
+    fixture = TestBed.createComponent(PostPrtoductFaqComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

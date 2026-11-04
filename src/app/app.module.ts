@@ -8,7 +8,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DemoAngularMaterialModule } from './DemoAngularMaterialModule';
 import { ViewWishListComponent } from './view-wish-list/view-wish-list.component';
 import { TrackOrderComponent } from './track-order/track-order.component';
@@ -40,7 +41,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
     
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,29 @@
+<div class="result" [ngSwitch]="state">
+    <mat-spinner *ngSwitchCase="'loading'"></mat-spinner>
+
+    <ng-container *ngSwitchCase="'paid'">
+        <h2>Payment successful</h2>
+        <p *ngIf="trackingId">Your tracking ID is <strong>{{trackingId}}</strong>.</p>
+        <p *ngIf="!trackingId">Your order is being created and will appear in your orders shortly.</p>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'pending'">
+        <h2>Payment processing</h2>
+        <p>We have not received confirmation yet. Check your orders in a few minutes.</p>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'cancelled'">
+        <h2>Payment cancelled</h2>
+        <p>You have not been charged, and your cart is unchanged.</p>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'error'">
+        <h2>We could not confirm your payment</h2>
+        <p>Check your orders before trying again, so you are not charged twice.</p>
+    </ng-container>
+
+    <div class="actions" *ngIf="state !== 'loading'">
+        <button mat-raised-button color="primary" routerLink="/customer/my_orders">My orders</button>
+        <button mat-button routerLink="/customer/cart">Back to cart</button>
+    </div>
+</div>

@@ -29,10 +29,10 @@ export class ViewProductDetailComponent implements OnInit {
   getProductdDetailById(){
     this.customerService.getProductDetailById(this.productId).subscribe(res =>{
       this.product=res.productDto;
-      this.product.processedImg= 'data:image/png;base64,' + res.prductDto.byteImg;
+      this.product.processedImg= 'data:image/png;base64,' + res.productDto.byteImg;
 
       this.FAQS=res.faqDtoList;
-      res.reviewDtoList.array.array.forEach(element => {
+      res.reviewDtoList.forEach(element => {
         element.processedImg='data:image/png;base64,' + element.returnedImg;
         this.reviews.push(element);
       });
@@ -46,7 +46,7 @@ addToWishlist(){
   userId: UserStorageService.getUserId(),
   }
   this.customerService.addProductToWishlist(wishListDto).subscribe(res=>{
-   if(res.is!=null){
+   if(res.id!=null){
     this.snackBar.open('Product added to wishlist successfully!', 'Close',{
     duration : 5000
     });

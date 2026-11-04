@@ -66,7 +66,7 @@ export class UpdateProductComponent implements OnInit {
     if(this.productForm.valid){
        const formData:FormData  = new FormData();
        if(this.imageChanged && this.selectedFile){
-        formData.append('imgg',this.selectedFile);
+        formData.append('img',this.selectedFile);
        }
       
        formData.append('categoryId', this.productForm.get('categoryId').value);

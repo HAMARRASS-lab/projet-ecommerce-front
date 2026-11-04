@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoAngularMaterialModule } from '../DemoAngularMaterialModule';
+import { SharedModule } from '../shared/shared.module';
 import { PostCategoryComponent } from './components/post-category/post-category.component';
 import { PostProductComponent } from './components/post-product/post-product.component';
 import { PostCouponComponent } from './components/post-coupon/post-coupon.component';
@@ -40,9 +40,9 @@ import { PostPrtoductFaqComponent } from './components/post-product-faq/post-pro
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    HttpClientModule,
     ReactiveFormsModule,
     DemoAngularMaterialModule,
+    SharedModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,

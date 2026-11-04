@@ -26,7 +26,7 @@ export class PostCouponComponent implements OnInit {
       name: [null, [Validators.required]],
       code: [null, [Validators.required]],
       discount: [null, [Validators.required]],
-      expirrationDate: [null, [Validators.required]],
+      expirationDate: [null, [Validators.required]],
 
     })
   }

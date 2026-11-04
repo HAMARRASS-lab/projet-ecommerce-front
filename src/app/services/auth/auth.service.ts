@@ -1,10 +1,11 @@
 import { UserStorageService } from './../storage/user-storage.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-const BASIC_URL="http://localhost:8080/";
+const BASIC_URL = environment.apiUrl;
 const AUTH_HEADER= 'authorization';
 
 @Injectable({
@@ -30,11 +31,11 @@ export class AuthService {
   const body = {username,password};
   return this.http.post(BASIC_URL+ 'authenticate',body, {headers, observe:'response'}).pipe(
     map((res)=>{
-       const token = res.headers.get('authorization').substring(7);
+       const token = res.headers.get('authorization')?.substring(7);
        const user = res.body;
        if(token && user ){
           this.userStorageService.saveToken(token);
-          this.userStorageService.saveUser(JSON.stringify(user));
+          this.userStorageService.saveUser(user);
           return true
        }
        return false;
