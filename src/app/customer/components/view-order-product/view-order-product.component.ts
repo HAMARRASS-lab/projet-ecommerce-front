@@ -21,7 +21,7 @@ export class ViewOrderProductComponent implements OnInit {
 
 getOrdredProductsDetailsByOrderId(){
   this.customerService.getOrderedProducts(this.orderId).subscribe(res=>{
-    res.productDtoList.array.array.forEach(element => {
+    res.productDtoList.forEach(element => {
       element.processedImg = 'data:image/jpeg;base64,'+ element.byteImg;
       this.orderedProductDetailsList.push(element);
     });

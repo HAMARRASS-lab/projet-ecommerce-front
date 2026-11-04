@@ -1,10 +1,10 @@
 <div class="container">
-    <h2>Past FAQ</h2>
+    <h2>Post FAQ</h2>
     <form [formGroup]="FAQForm" (ngSubmit)="postFAQ()">
     
     <mat-form-field appearance="outline" class="form-field">
     <mat-label>Question</mat-label>
-    <textarea matInput placeholder="Question" formContorlName="question">
+    <textarea matInput placeholder="Question" formControlName="question">
     
     </textarea>
     <mat-error *ngIf="FAQForm.get('question')?.hasError('required')">This input is required!</mat-error>
@@ -13,7 +13,7 @@
     
     <mat-form-field appearance="outline" class="form-field">
     <mat-label>Answer</mat-label>
-    <textarea matInput placeholder="Answer" formContorlName="answer">
+    <textarea matInput placeholder="Answer" formControlName="answer">
     
     </textarea>
     <mat-error *ngIf="FAQForm.get('answer')?.hasError('required')">This input is required!</mat-error>

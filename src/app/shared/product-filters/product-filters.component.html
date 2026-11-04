@@ -1,0 +1,27 @@
+<form [formGroup]="filterForm" class="filters">
+    <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="categoryName">
+            <mat-option [value]="null">All categories</mat-option>
+            <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Min price</mat-label>
+        <input matInput type="number" min="0" formControlName="minPrice">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Max price</mat-label>
+        <input matInput type="number" min="0" formControlName="maxPrice">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Sort by</mat-label>
+        <mat-select formControlName="sort">
+            <mat-option value="default">Default</mat-option>
+            <mat-option value="priceAsc">Price: low to high</mat-option>
+            <mat-option value="priceDesc">Price: high to low</mat-option>
+            <mat-option value="nameAsc">Name: A to Z</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-button type="button" (click)="reset()">Reset</button>
+</form>

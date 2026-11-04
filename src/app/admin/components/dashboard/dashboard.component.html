@@ -1,12 +1,14 @@
 <form [formGroup]="searchProductForm" class="search-form" (submit)="submitForm()">
     <mat-form-field appearance="outline" class="search-input">
         <mat-label>Enter keyword to search</mat-label>
-        <input matInput formControllerName="title">
-        <button mat-button matSuffix color="primary" [disabled]="searchProductForm.invalid">
+        <input matInput formControlName="title">
+        <button mat-button matSuffix color="primary">
             <mat-icon>search</mat-icon>
         </button>
     </mat-form-field>
 </form>
+
+<app-product-filters [categories]="categories" (criteriaChange)="onCriteriaChange($event)"></app-product-filters>
 
 <div class="product-list">
 
@@ -30,16 +32,16 @@
                 </div>
                 <div class="info-row">
                     <span class="info-label">Category:</span>
-                    <span class="info.value">${{product.categoryName}}</span>
+                    <span class="info.value">{{product.categoryName}}</span>
 
                 </div>
 
                 <mat-divider></mat-divider>
                 <div class="actions">
                     <button mat-raised-button color="primary" class="update-button"
-                        [routerLink="'/admin/faq/'+product.id" ]>FAQ</button>
+                        [routerLink]="'/admin/faq/'+product.id">FAQ</button>
                     <button mat-raised-button color="accent" class="update-button"
-                        [routerLink="'/admin/product/'+product.id" ]>Update</button>
+                        [routerLink]="'/admin/product/'+product.id">Update</button>
                     <button mat-raised-button color="warn" class="delete-button"
                         (click)="deleteProduct(product.id)">Delete</button>
 
@@ -49,4 +51,9 @@
         </div>
     </mat-card>
 
+    <p class="no-results" *ngIf="filteredCount === 0">No products found.</p>
+
 </div>
+
+<mat-paginator *ngIf="filteredCount > 0" [length]="filteredCount" [pageIndex]="pageIndex" [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions" (page)="onPage($event)"></mat-paginator>

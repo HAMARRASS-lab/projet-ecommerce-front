@@ -18,20 +18,20 @@
     </div>
     <mat-form-field appearance="outline">
       <mat-label>Rating</mat-label>
-      <mat-slect formControlName="rating">
+      <mat-select formControlName="rating">
         <mat-option value="1">1 Star</mat-option>
         <mat-option value="2">2 Star</mat-option>
         <mat-option value="3">3 Star</mat-option>
         <mat-option value="4">4 Star</mat-option>
         <mat-option value="5">5 Star</mat-option>
-      </mat-slect>
+      </mat-select>
       <mat-error *ngIf="reviewForm.get('rating').invalid && reviewForm.get('rating').touched">
         Please select a rating!
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description" placeholder="Description" rows="s"></textarea>
+        <textarea matInput formControlName="description" placeholder="Description" rows="5"></textarea>
         <mat-error *ngIf="reviewForm.get('description').invalid && reviewForm.get('description').touched">
             This input is required!
         </mat-error>
