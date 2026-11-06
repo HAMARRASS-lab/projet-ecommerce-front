@@ -17,12 +17,7 @@ export class AuthService {
 
 
   register(signupRequest: any): Observable<any> {
-    return this.http.post(BASIC_URL + "sign-up", signupRequest).pipe(
-      map((response: any) => {
-        console.log('Registration Response:', response);
-        return response; // You might want to modify this based on your backend response structure
-      })
-    );
+    return this.http.post(BASIC_URL + "sign-up", signupRequest);
   }
   
 
@@ -43,7 +38,7 @@ export class AuthService {
   )
 }
 
-getOrderByTrackingId(trackingId: number): Observable<any>{
-  return this.http.get(BASIC_URL+ `order/${trackingId}`);
+getOrderByTrackingId(trackingId: string): Observable<any>{
+  return this.http.get(BASIC_URL+ `order/${encodeURIComponent(trackingId)}`);
 }
 } 

@@ -1,3 +1,4 @@
+import { TEST_IMPORTS } from 'src/app/testing/test-imports';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostCategoryComponent } from './post-category.component';
@@ -8,6 +9,7 @@ describe('PostCategoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: TEST_IMPORTS,
       declarations: [ PostCategoryComponent ]
     })
     .compileComponents();

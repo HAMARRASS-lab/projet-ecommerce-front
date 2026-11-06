@@ -13,13 +13,15 @@
                         </div>
                         <div class="item-price">{{item.price | currency}}</div>
                         <div class="quantity-controls">
-                            <!-- (click)="dePlace Order API & Decrease Product Quantity in CartcreaseQuantity(item.productId)"-->
                                   <button mat-icon-button [disabled]="item.quantity == 1" (click)="decreaseQuantity(item.productId)">
                                     <mat-icon>remove_circle_outline </mat-icon>
                                   </button>
                                   <span class="quantity">{{ item.quantity }}</span>
                                   <button mat-icon-button (click)="increaseQuantity(item.productId)">
                                     <mat-icon> add_circle_outline </mat-icon>
+                                  </button>
+                                  <button mat-icon-button color="warn" aria-label="Remove from cart" (click)="removeItem(item.productId)">
+                                    <mat-icon>delete_outline</mat-icon>
                                   </button>
                         </div>
 

@@ -3,6 +3,7 @@ import { CustomerService } from '../../services/customer.service';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserStorageService } from 'src/app/services/storage/user-storage.service';
+import { apiErrorMessage } from 'src/app/shared/api-error';
 
 @Component({
   selector: 'app-view-product-detail',
@@ -33,7 +34,9 @@ export class ViewProductDetailComponent implements OnInit {
 
       this.FAQS=res.faqDtoList;
       res.reviewDtoList.forEach(element => {
-        element.processedImg='data:image/png;base64,' + element.returnedImg;
+        if(element.returnedImg){
+          element.processedImg='data:image/png;base64,' + element.returnedImg;
+        }
         this.reviews.push(element);
       });
 
@@ -55,6 +58,10 @@ addToWishlist(){
      duration:5000
     });
    }
+  }, error=>{
+    this.snackBar.open(apiErrorMessage(error, 'Could not add this product to your wishlist'), 'Close',{
+     duration:5000
+    });
   })
 }
 

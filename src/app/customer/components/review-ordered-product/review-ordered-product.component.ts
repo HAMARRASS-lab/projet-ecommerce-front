@@ -4,6 +4,7 @@ import { CustomerService } from '../../services/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserStorageService } from 'src/app/services/storage/user-storage.service';
+import { apiErrorMessage } from 'src/app/shared/api-error';
 
 @Component({
   selector: 'app-review-ordered-product',
@@ -34,7 +35,11 @@ export class ReviewOrderedProductComponent implements OnInit {
   }
   
   onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
+    const file = event.target.files[0];
+    if (!file) {
+      return;
+    }
+    this.selectedFile = file;
     this.previewImage();
   }
 
@@ -47,8 +52,14 @@ export class ReviewOrderedProductComponent implements OnInit {
   }
 
   submitForm() {
+    if (this.reviewForm.invalid) {
+      this.reviewForm.markAllAsTouched();
+      return;
+    }
     const formData : FormData =new FormData();
-    formData.append('img', this.selectedFile);
+    if (this.selectedFile) {
+      formData.append('img', this.selectedFile);
+    }
     formData.append('productId', this.productId.toString());
     formData.append('userId', UserStorageService.getUserId().toString());
     formData.append('rating', this.reviewForm.get('rating').value);
@@ -65,6 +76,10 @@ export class ReviewOrderedProductComponent implements OnInit {
           duration : 5000
         });
        }
+    }, error =>{
+      this.snackBar.open(apiErrorMessage(error, 'Could not post your review'), 'Close',{
+        duration : 5000
+      });
     })
 
   }

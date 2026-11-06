@@ -1,35 +1,28 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { UserStorageService } from './services/storage/user-storage.service';
+import { TEST_IMPORTS } from './testing/test-imports';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
+    UserStorageService.signOut();
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: TEST_IMPORTS,
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it(`should have as title 'ECommerceWeb'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('ECommerceWeb');
-  });
-
-  it('should render title', () => {
+  it('shows the guest menu when signed out', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ECommerceWeb app is running!');
+    const text = fixture.nativeElement.textContent;
+    expect(text).toContain('Login');
+    expect(text).not.toContain('Logout');
+    expect(text).not.toContain('demo');
   });
 });

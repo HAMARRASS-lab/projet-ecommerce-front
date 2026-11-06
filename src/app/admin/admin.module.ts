@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoAngularMaterialModule } from '../DemoAngularMaterialModule';
 import { SharedModule } from '../shared/shared.module';
 import { PostCategoryComponent } from './components/post-category/post-category.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 import { PostProductComponent } from './components/post-product/post-product.component';
 import { PostCouponComponent } from './components/post-coupon/post-coupon.component';
 import { CouponsComponent } from './components/coupons/coupons.component';
@@ -27,6 +28,7 @@ import { PostPrtoductFaqComponent } from './components/post-product-faq/post-pro
     AdminComponent,
     DashboardComponent,
     PostCategoryComponent,
+    CategoriesComponent,
     PostProductComponent,
     PostCouponComponent,
     CouponsComponent,

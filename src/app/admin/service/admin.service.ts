@@ -20,6 +20,18 @@ export class AdminService {
     return this.http.get(BASIC_URL + 'api/admin')
 
   }
+  getCategoryById(categoryId: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/admin/category/${categoryId}`)
+
+  }
+  updateCategory(categoryId: number, categoryDto: any): Observable<any> {
+    return this.http.put(BASIC_URL + `api/admin/category/${categoryId}`, categoryDto)
+
+  }
+  deleteCategory(categoryId: number): Observable<any> {
+    return this.http.delete(BASIC_URL + `api/admin/category/${categoryId}`)
+
+  }
   addProduct(productDto: any): Observable<any> {
     return this.http.post(BASIC_URL + 'api/admin/product', productDto)
 
@@ -48,6 +60,18 @@ export class AdminService {
     return this.http.get(BASIC_URL + 'api/admin/coupons')
 
   }
+  getCouponById(couponId: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/admin/coupons/${couponId}`)
+
+  }
+  updateCoupon(couponId: number, couponDto: any): Observable<any> {
+    return this.http.put(BASIC_URL + `api/admin/coupons/${couponId}`, couponDto)
+
+  }
+  deleteCoupon(couponId: number): Observable<any> {
+    return this.http.delete(BASIC_URL + `api/admin/coupons/${couponId}`)
+
+  }
   getPlaceOrders(): Observable<any> {
     return this.http.get(BASIC_URL + 'api/admin/placeOrders')
 
@@ -63,8 +87,23 @@ export class AdminService {
 
   }
 
-  postFAQ(productId: number, faqDto: string): Observable<any> {
+  postFAQ(productId: number, faqDto: any): Observable<any> {
     return this.http.post(BASIC_URL + `api/admin/faq/${productId}`, faqDto)
+
+  }
+
+  getFAQs(productId: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/admin/faq/${productId}`)
+
+  }
+
+  updateFAQ(faqId: number, faqDto: any): Observable<any> {
+    return this.http.put(BASIC_URL + `api/admin/faq/${faqId}`, faqDto)
+
+  }
+
+  deleteFAQ(faqId: number): Observable<any> {
+    return this.http.delete(BASIC_URL + `api/admin/faq/${faqId}`)
 
   }
 

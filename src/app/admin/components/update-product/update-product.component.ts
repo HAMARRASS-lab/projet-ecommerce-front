@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../../service/admin.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { apiErrorMessage } from 'src/app/shared/api-error';
 
 @Component({
   selector: 'app-update-product',
@@ -30,7 +31,11 @@ export class UpdateProductComponent implements OnInit {
  
 
   onFileSelected(event:any){
-    this.selectedFile=event.target.files[0];
+    const file = event.target.files[0];
+    if(!file){
+      return;
+    }
+    this.selectedFile=file;
     this.previewImage();
     this.imageChanged=true;
     this.existingImage=null;
@@ -84,6 +89,10 @@ export class UpdateProductComponent implements OnInit {
               duration:5000
             });
            }
+       }, (error)=>{
+        this.MatSnackBar.open(apiErrorMessage(error, 'Could not save this product'), 'Close', {
+          duration:5000
+        });
        })
     }else{
       for(const i in this.productForm.controls){

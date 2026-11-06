@@ -56,6 +56,16 @@ export class UserStorageService {
     return role=='CUSTOMER';
   }
 
+  /** True once the JWT's `exp` has passed, or if the token can't be read. */
+  static isTokenExpired(token: string): boolean{
+    try{
+      const payload = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+      return JSON.parse(atob(payload)).exp * 1000 <= Date.now();
+    }catch{
+      return true;
+    }
+  }
+
   /** Where this user belongs: their dashboard, or the login page. */
   static getHomeUrl(): string{
     if(this.isAdminLoggeedIn()){

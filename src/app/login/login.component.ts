@@ -44,7 +44,9 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('admin/dashboard');
         }else if(UserStorageService.isCustomerLoggeedIn()){
           this.router.navigateByUrl('customer/dashboard');
-        }      
+        }else{
+          this.snackBar.open('Login failed. Please try again.', 'ERROR', { duration: 5000 });
+        }
       
       },
       (error) => {

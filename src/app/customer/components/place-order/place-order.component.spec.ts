@@ -1,3 +1,5 @@
+import { TEST_IMPORTS } from 'src/app/testing/test-imports';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlaceOrderComponent } from './place-order.component';
@@ -8,7 +10,9 @@ describe('PlaceOrderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlaceOrderComponent ]
+      imports: TEST_IMPORTS,
+      declarations: [ PlaceOrderComponent ],
+      providers: [ { provide: MatDialogRef, useValue: { close: () => undefined } } ]
     })
     .compileComponents();
   });

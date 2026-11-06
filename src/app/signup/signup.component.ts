@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { apiErrorMessage } from '../shared/api-error';
 
 @Component({
   selector: 'app-signup',
@@ -46,12 +47,10 @@ export class SignupComponent implements OnInit {
       (response) => {
       
         this.snackBar.open('Sign up successful', 'Close', { duration: 5000 });
-        console.log('Registration Response:', response);
         this.router.navigateByUrl("/login");
       },
       (error) => {
-        this.snackBar.open('Sign up failed', 'Close', { duration: 5000, panelClass: 'error-snackbar' });
-        this.router.navigateByUrl("/login");
+        this.snackBar.open(apiErrorMessage(error, 'Sign up failed'), 'Close', { duration: 5000, panelClass: 'error-snackbar' });
       }
     );
     

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { apiErrorMessage } from 'src/app/shared/api-error';
 import { categoryNames, filterProducts, ProductFilterCriteria } from 'src/app/shared/product-filters/product-filter';
 
 @Component({
@@ -81,6 +82,8 @@ export class DashboardComponent implements OnInit {
      addToCart(id: any){
       this.customerService.addToCart(id).subscribe(res=>{
         this.snackBar.open("Product added to cart successfully", "Close",{duration:5000})
+      }, error=>{
+        this.snackBar.open(apiErrorMessage(error, "Could not add this product to your cart"), "Close",{duration:5000})
       })
      }
 }

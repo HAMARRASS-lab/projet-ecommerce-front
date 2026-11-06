@@ -15,7 +15,6 @@ export class AnalyticsComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminService.getAnalytics().subscribe(res =>{
-      console.log(res);
       this.data=res;
     })
   }

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from '../../service/admin.service';
+import { apiErrorMessage } from 'src/app/shared/api-error';
 
 @Component({
   selector: 'app-post-product',
@@ -26,7 +27,11 @@ export class PostProductComponent implements OnInit {
  
 
   onFileSelected(event:any){
-    this.selectedFile = event.target.files[0];
+    const file = event.target.files[0];
+    if(!file){
+      return;
+    }
+    this.selectedFile = file;
     this.previewImage();
   }
    previewImage(){
@@ -55,7 +60,11 @@ export class PostProductComponent implements OnInit {
   }
 
   addProduct() :void{
-    if(this.productForm.valid){
+    if(this.productForm.valid && !this.selectedFile){
+      this.MatSnackBar.open('Please select a product image', 'Close', {
+        duration:5000
+      });
+    } else if(this.productForm.valid){
        const formData: FormData = new FormData();
        formData.append('img', this.selectedFile);
        formData.append('categoryId', this.productForm.get('categoryId').value);
@@ -73,6 +82,10 @@ export class PostProductComponent implements OnInit {
               duration:5000
             });
            }
+       }, (error)=>{
+        this.MatSnackBar.open(apiErrorMessage(error, 'Could not save this product'), 'Close', {
+          duration:5000
+        });
        })
     } else {
       for(const i in this.productForm.controls){
