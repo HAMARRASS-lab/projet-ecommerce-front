@@ -54,16 +54,41 @@ describe('AuthInterceptor', () => {
     request.flush([]);
   });
 
-  [401, 403].forEach(status => {
-    it(`ends the session on ${status}`, () => {
-      let received: number | undefined;
-      http.get(url).subscribe({ error: error => received = error.status });
-      mock.expectOne(url).flush('', { status, statusText: 'Denied' });
+  /** A JWT whose `exp` is the given number of seconds from now. */
+  const jwt = (secondsFromNow: number) =>
+    `header.${btoa(JSON.stringify({ exp: Date.now() / 1000 + secondsFromNow }))}.signature`;
 
-      expect(received).toBe(status);
-      expect(UserStorageService.getToken()).toBeNull();
-      expect(router.navigateByUrl).toHaveBeenCalledWith('/login');
-    });
+  const fail = (status: number) => {
+    let received: number | undefined;
+    http.get(url).subscribe({ error: error => received = error.status });
+    mock.expectOne(url).flush('', { status, statusText: 'Denied' });
+    expect(received).toBe(status);
+  };
+
+  it('ends the session on 401', () => {
+    fail(401);
+    expect(UserStorageService.getToken()).toBeNull();
+    expect(router.navigateByUrl).toHaveBeenCalledWith('/login');
+  });
+
+  it('ends the session on 403 when the token has expired', () => {
+    TestBed.inject(UserStorageService).saveToken(jwt(-60));
+    fail(403);
+    expect(UserStorageService.getToken()).toBeNull();
+    expect(router.navigateByUrl).toHaveBeenCalledWith('/login');
+  });
+
+  it('ends the session on 403 when the token cannot be read', () => {
+    fail(403);
+    expect(UserStorageService.getToken()).toBeNull();
+  });
+
+  it('keeps the session on 403 while the token is valid', () => {
+    const token = jwt(3600);
+    TestBed.inject(UserStorageService).saveToken(token);
+    fail(403);
+    expect(UserStorageService.getToken()).toBe(token);
+    expect(router.navigateByUrl).not.toHaveBeenCalled();
   });
 
   it('keeps the session on other errors', () => {

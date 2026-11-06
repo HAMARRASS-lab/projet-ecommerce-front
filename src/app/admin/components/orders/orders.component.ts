@@ -1,6 +1,7 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from './../../service/admin.service';
 import { Component, OnInit } from '@angular/core';
+import { apiErrorMessage } from 'src/app/shared/api-error';
 
 @Component({
   selector: 'app-orders',
@@ -35,6 +36,8 @@ export class OrdersComponent implements OnInit {
       }else{
         this.snackBar.open("Something went wrong", "Close", {duration:5020})
       }
+    }, error=>{
+      this.snackBar.open(apiErrorMessage(error, "Could not change the order status"), "Close", {duration:5000})
     })
   }
 }

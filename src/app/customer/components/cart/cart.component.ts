@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../services/customer.service';
+import { apiErrorMessage } from 'src/app/shared/api-error';
 import { PlaceOrderComponent } from '../place-order/place-order.component';
-import { publish } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -35,6 +35,10 @@ export class CartComponent implements OnInit {
   }
 
   applyCoupon(){
+    if(this.couponForm.invalid){
+      this.couponForm.markAllAsTouched();
+      return;
+    }
     this.customerService.applyCoupon(this.couponForm.get(['code'])!.value).subscribe(res=>{
 
       this.snackbar.open("Coupon Applied successfully" , 'close',{
@@ -43,7 +47,7 @@ export class CartComponent implements OnInit {
       this.getCart();
 
     }, error=>{
-       this.snackbar.open(error.error, 'Close',{
+       this.snackbar.open(apiErrorMessage(error, 'Coupon could not be applied'), 'Close',{
         duration: 5000
        });
     })
@@ -74,6 +78,15 @@ export class CartComponent implements OnInit {
       this.getCart();
     })
 
+   }
+
+   removeItem(productId: any){
+    this.customerService.removeFromCart(productId).subscribe(() =>{
+      this.snackbar.open('Product removed from cart.', 'Close', {duration:5000});
+      this.getCart();
+    }, error =>{
+      this.snackbar.open(apiErrorMessage(error, 'Could not remove product from cart'), 'Close', {duration:5000});
+    })
    }
 
    placeOrder(){

@@ -1,6 +1,6 @@
 <div class="container">
-    <h2>Post FAQ</h2>
-    <form [formGroup]="FAQForm" (ngSubmit)="postFAQ()">
+    <h2>{{editingId ? 'Edit FAQ' : 'Post FAQ'}}</h2>
+    <form [formGroup]="FAQForm" #faqForm="ngForm" (ngSubmit)="saveFAQ(faqForm)">
     
     <mat-form-field appearance="outline" class="form-field">
     <mat-label>Question</mat-label>
@@ -20,6 +20,16 @@
     
     </mat-form-field>
     
-    <button mat-raised-button color="primary" type="submit">Post FAQ</button>
+    <button mat-raised-button color="primary" type="submit">{{editingId ? 'Save changes' : 'Post FAQ'}}</button>
+    <button mat-button type="button" *ngIf="editingId" (click)="resetForm(faqForm)">Cancel</button>
     </form>
+
+    <mat-card class="faq-item" *ngFor="let faq of faqs">
+        <mat-card-content>
+            <strong>{{faq.question}}</strong>
+            <p>{{faq.answer}}</p>
+            <button mat-stroked-button color="primary" (click)="edit(faq)">Edit</button>
+            <button mat-stroked-button color="warn" (click)="deleteFAQ(faq, faqForm)">Delete</button>
+        </mat-card-content>
+    </mat-card>
     </div>

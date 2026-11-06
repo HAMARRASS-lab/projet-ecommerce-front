@@ -1,6 +1,7 @@
 import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-track-order',
@@ -14,6 +15,7 @@ export class TrackOrderComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private authService: AuthService,
+    private snackBar: MatSnackBar,
 
   ) { }
 
@@ -23,10 +25,21 @@ export class TrackOrderComponent implements OnInit {
     })
   }
   submitForm(){
-    this.authService.getOrderByTrackingId(this.searchOrderForm.get('trackingId').value).subscribe(res =>{
-      console.log(res);
+    const trackingId = this.searchOrderForm.get('trackingId').value?.trim();
+    if(!trackingId){
+      return;
+    }
+    this.order = null;
+    this.authService.getOrderByTrackingId(trackingId).subscribe(res =>{
       this.order=res;
-    })
+      if(!res){
+        this.showNotFound();
+      }
+    }, () => this.showNotFound())
+  }
+
+  private showNotFound(){
+    this.snackBar.open('No order found for this tracking ID', 'Close', {duration: 5000});
   }
 
 }

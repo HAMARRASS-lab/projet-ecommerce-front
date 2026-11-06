@@ -1,3 +1,4 @@
+import { TEST_IMPORTS } from 'src/app/testing/test-imports';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostProductComponent } from './post-product.component';
@@ -8,6 +9,7 @@ describe('PostProductComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: TEST_IMPORTS,
       declarations: [ PostProductComponent ]
     })
     .compileComponents();

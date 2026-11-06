@@ -47,6 +47,12 @@ export class CustomerService {
 
   }
 
+  removeFromCart(productId: any): Observable<any> {
+    const userId = UserStorageService.getUserId()
+    return this.http.delete(BASIC_URL + `api/customer/cart/${userId}/${productId}`)
+
+  }
+
   getCartByUserId(): Observable<any> {
     const userId = UserStorageService.getUserId()
     return this.http.get(BASIC_URL + `api/customer/cart/${userId}`)
@@ -103,6 +109,12 @@ export class CustomerService {
 
   }
   
+  removeFromWishlist(wishlistId: number): Observable<any> {
+
+    return this.http.delete(BASIC_URL + `api/customer/wishlist/${wishlistId}`)
+
+  }
+
   getProductDetailById(productId: number): Observable<any> {
 
     return this.http.get(BASIC_URL + `api/customer/product/${productId}`)

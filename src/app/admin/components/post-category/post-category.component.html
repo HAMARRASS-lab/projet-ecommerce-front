@@ -1,6 +1,6 @@
 <div class="container">
-   <h2>Add category</h2>
-   <form [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+   <h2>{{categoryId ? 'Edit category' : 'Add category'}}</h2>
+   <form [formGroup]="categoryForm" (ngSubmit)="saveCategory()">
       
        <mat-form-field appearance="outline" class="form-field">
         <mat-label>Name</mat-label>
@@ -13,7 +13,7 @@
         <mat-error *ngIf="categoryForm.get('description')?.hasError('required')">This input required</mat-error>
        </mat-form-field>
 
-       <button mat-raised-button color="primary" type="submit">Add category</button>
+       <button mat-raised-button color="primary" type="submit">{{categoryId ? 'Save changes' : 'Add category'}}</button>
    </form>
 
 </div>

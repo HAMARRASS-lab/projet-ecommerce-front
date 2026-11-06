@@ -22,9 +22,9 @@
 
          </div>
     </div>
-    <div class="total-price">
-        Total: {{ totalAmount | currency}}
-    </div>
 
+   </div>
+   <div class="total-price" *ngIf="orderedProductDetailsList.length > 0">
+        Total: {{ totalAmount | currency}}
    </div>
 </div>
